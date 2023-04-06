@@ -1,5 +1,7 @@
 package com.jaiveer.backend.product;
 
+import com.jaiveer.backend.user.User;
+import com.jaiveer.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -18,7 +20,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class ProductController {
     private final ProductRepository repository;
     private final ProductModelAssembler assembler;
-    
+    //temp for testing
+    private final UserRepository userRepo;
+
     @GetMapping("/products")
     public CollectionModel<EntityModel<Product>> all() {
         List<EntityModel<Product>> Products = repository.findAll().stream()
@@ -62,4 +66,12 @@ public class ProductController {
     void deleteProduct(@PathVariable Long id) {
         repository.deleteById(id);
     }
+
+
+    //temp for testing
+    @GetMapping("/test")
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
+    }
+
 }
