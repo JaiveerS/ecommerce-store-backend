@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -53,4 +55,9 @@ public class AuthenticationService {
     }
 
 
+    public String getFirstName(String token) {
+        String email = jwtService.extractUsername(token);
+        Optional<String> s = userRepo.findByEmail(email).map(User::getFirstname);
+        return s.stream().findFirst().map(Object::toString).orElse("name");
+    }
 }
