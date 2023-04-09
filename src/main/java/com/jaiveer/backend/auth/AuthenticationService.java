@@ -60,4 +60,11 @@ public class AuthenticationService {
         Optional<String> s = userRepo.findByEmail(email).map(User::getFirstname);
         return s.stream().findFirst().map(Object::toString).orElse("name");
     }
+
+    public String getId(String token) {
+        String email = jwtService.extractUsername(token);
+        Optional<User> s = userRepo.findByEmail(email);
+        return s.map(User::getId).toString();
+    }
+
 }
