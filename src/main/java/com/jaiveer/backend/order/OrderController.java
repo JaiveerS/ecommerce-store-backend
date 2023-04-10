@@ -36,7 +36,7 @@ public class OrderController {
     @PostMapping("/order")
     public Order placeOrder(
             @RequestBody Order request
-    ) {
+    ) throws Exception {
         return service.addOrder(request);
     }
 }

@@ -1,6 +1,7 @@
 package com.jaiveer.backend.auth;
 
 import com.jaiveer.backend.config.JwtService;
+import com.jaiveer.backend.order.Order;
 import com.jaiveer.backend.user.Role;
 import com.jaiveer.backend.user.User;
 import com.jaiveer.backend.user.UserRepository;
@@ -22,7 +23,8 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequest request) throws Exception {
+        request.validateAll();
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -65,6 +67,16 @@ public class AuthenticationService {
         String email = jwtService.extractUsername(token);
         Optional<User> s = userRepo.findByEmail(email);
         return s.map(User::getId).toString();
+    }
+
+//    public boolean isMinLength(String s, int minLength) throws Exception{
+//        return (s.length() > minLength ? true : throw new Exception("password must be longer than 2 characters"));
+//    }
+
+    public void validateAllOrderRequests(Order request) throws Exception {
+        if (request.validateFullname() && request.validatePhoneNumber() && request.validateAddress() && request.validateCity() && request.validateProvince()) {
+            request.validatePostalCode();
+        }
     }
 
 }

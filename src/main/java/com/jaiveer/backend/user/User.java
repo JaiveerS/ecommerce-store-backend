@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +30,7 @@ public class User implements UserDetails {
     private String lastname;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(nullable = false)
+    @Length(min = 2)
     private String password;
 
     @Enumerated(EnumType.STRING)

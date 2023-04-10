@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 public class OrderService {
     private final OrderRepository orderRepo;
 
-    public Order addOrder(Order request) {
+
+    public Order addOrder(Order request) throws Exception {
+        request.validateAll();
         return orderRepo.save(request);
     }
 
