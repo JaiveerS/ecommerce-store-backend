@@ -31,6 +31,7 @@ public class AuthenticationController {
             @RequestHeader(name = "Authorization") String token
     ) {
         String jwt = token.substring(7);
+//        return service.getId(jwt);
         return service.getFirstName(jwt);
     }
 

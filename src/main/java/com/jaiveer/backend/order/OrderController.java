@@ -23,8 +23,7 @@ public class OrderController {
 
     @GetMapping("/all")
     public CollectionModel<Order> getAllOrders() {
-        List<Order> Orders = orderRepo.findAll();
-        return CollectionModel.of(Orders);
+        return CollectionModel.of(orderRepo.findAll());
     }
 
     @GetMapping("/{id}")

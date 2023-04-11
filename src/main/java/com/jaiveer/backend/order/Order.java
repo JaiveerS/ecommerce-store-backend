@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -29,7 +31,9 @@ public class Order {
     private String province;
     @Column(nullable = false)
     private String postalCode;
-
+    //orderItems_id
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderItems> orderItems;
 
     public boolean validateFullname() throws Exception {
         if (this.fullName.length() < 2) {
