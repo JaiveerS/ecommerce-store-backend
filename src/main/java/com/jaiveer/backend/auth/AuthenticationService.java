@@ -1,7 +1,6 @@
 package com.jaiveer.backend.auth;
 
 import com.jaiveer.backend.config.JwtService;
-import com.jaiveer.backend.order.Order;
 import com.jaiveer.backend.user.Role;
 import com.jaiveer.backend.user.User;
 import com.jaiveer.backend.user.UserRepository;
@@ -11,8 +10,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,8 +44,10 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = userRepo.findByEmail(request.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("Email not found"));
+        var user = userRepo.findByEmail(request.getEmail());
+        if (user == null) {
+            throw new UsernameNotFoundException("Email not found");
+        }
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
@@ -59,24 +58,14 @@ public class AuthenticationService {
 
     public String getFirstName(String token) {
         String email = jwtService.extractUsername(token);
-        Optional<String> s = userRepo.findByEmail(email).map(User::getFirstname);
-        return s.stream().findFirst().map(Object::toString).orElse("name");
+        User s = userRepo.findByEmail(email);
+        return s.getFirstname();
     }
 
     public String getId(String token) {
         String email = jwtService.extractUsername(token);
-        Optional<User> s = userRepo.findByEmail(email);
-        return s.map(User::getId).toString();
-    }
-
-//    public boolean isMinLength(String s, int minLength) throws Exception{
-//        return (s.length() > minLength ? true : throw new Exception("password must be longer than 2 characters"));
-//    }
-
-    public void validateAllOrderRequests(Order request) throws Exception {
-        if (request.validateFullname() && request.validatePhoneNumber() && request.validateAddress() && request.validateCity() && request.validateProvince()) {
-            request.validatePostalCode();
-        }
+        User s = userRepo.findByEmail(email);
+        return s.getId().toString();
     }
 
 }

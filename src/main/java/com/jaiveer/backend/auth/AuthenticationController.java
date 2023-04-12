@@ -27,12 +27,11 @@ public class AuthenticationController {
     }
 
     @GetMapping("/token")
-    public String getUserInfo(
+    public UserInfoResponse getUserInfo(
             @RequestHeader(name = "Authorization") String token
     ) {
         String jwt = token.substring(7);
-//        return service.getId(jwt);
-        return service.getFirstName(jwt);
+        return new UserInfoResponse(service.getId(jwt), service.getFirstName(jwt));
     }
 
 //    @PostMapping("/refresh-token")
