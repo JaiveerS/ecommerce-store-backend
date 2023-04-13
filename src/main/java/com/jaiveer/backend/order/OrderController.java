@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/orders")
 @RequiredArgsConstructor
 public class OrderController {
@@ -31,7 +31,6 @@ public class OrderController {
         return orderRepo.findByUserId(id);
     }
 
-    @CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"})
     @PostMapping("/order")
     public Order placeOrder(
             @RequestBody Order request
