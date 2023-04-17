@@ -20,7 +20,7 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return userRepo::findByEmail;
+        return userRepo::findByEmailIgnoreCase;
     }
 
     @Bean

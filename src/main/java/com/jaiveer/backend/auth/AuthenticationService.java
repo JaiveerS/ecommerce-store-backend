@@ -22,6 +22,10 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) throws Exception {
         request.validateAll();
+        if (userRepo.existsByEmailIgnoreCase(request.getEmail())) {
+            throw new Exception("user with this email already exists");
+        }
+
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -44,7 +48,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = userRepo.findByEmail(request.getEmail());
+        var user = userRepo.findByEmailIgnoreCase(request.getEmail());
         if (user == null) {
             throw new UsernameNotFoundException("Email not found");
         }
@@ -58,13 +62,13 @@ public class AuthenticationService {
 
     public String getFirstName(String token) {
         String email = jwtService.extractUsername(token);
-        User s = userRepo.findByEmail(email);
+        User s = userRepo.findByEmailIgnoreCase(email);
         return s.getFirstname();
     }
 
     public String getId(String token) {
         String email = jwtService.extractUsername(token);
-        User s = userRepo.findByEmail(email);
+        User s = userRepo.findByEmailIgnoreCase(email);
         return s.getId().toString();
     }
 
