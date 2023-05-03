@@ -67,11 +67,19 @@ public class ProductController {
         repository.deleteById(id);
     }
 
+    @GetMapping("/categories")
+    public List<String> getAllCategories() {
+        return repository.findUniqueCategories();
+    }
+
+    @GetMapping("/category/{cat}")
+    public List<Product> getById(@PathVariable String cat) {
+        return repository.findAllByCategory(cat);
+    }
 
     //temp for testing
     @GetMapping("/test")
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
-
 }
