@@ -33,13 +33,4 @@ public class AuthenticationController {
         String jwt = token.substring(7);
         return new UserInfoResponse(service.getId(jwt), service.getFirstName(jwt), service.getLastName(jwt), service.getEmail(jwt));
     }
-
-//    @PostMapping("/refresh-token")
-//    public void refreshToken(
-//            HttpServletRequest request,
-//            HttpServletResponse response
-//    ) throws IOException {
-//        loginService.refreshToken(request, response);
-//    }
-
 }
