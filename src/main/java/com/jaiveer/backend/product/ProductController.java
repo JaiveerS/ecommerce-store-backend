@@ -72,7 +72,7 @@ public class ProductController {
         return repository.findUniqueCategories();
     }
 
-    @GetMapping("/category/{cat}")
+    @GetMapping("/categories/{cat}")
     public List<Product> getById(@PathVariable String cat) {
         return repository.findAllByCategory(cat);
     }

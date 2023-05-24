@@ -59,17 +59,28 @@ public class AuthenticationService {
                 .build();
     }
 
+    public String getEmail(String token) {
+        return jwtService.extractUsername(token);
+    }
 
     public String getFirstName(String token) {
-        String email = jwtService.extractUsername(token);
-        User s = userRepo.findByEmailIgnoreCase(email);
+        User s = getUserFromToken(token);
         return s.getFirstname();
     }
 
+    public String getLastName(String token) {
+        User s = getUserFromToken(token);
+        return s.getLastname();
+    }
+
     public String getId(String token) {
-        String email = jwtService.extractUsername(token);
-        User s = userRepo.findByEmailIgnoreCase(email);
+        User s = getUserFromToken(token);
         return s.getId().toString();
+    }
+
+    public User getUserFromToken(String token) {
+        String email = getEmail(token);
+        return userRepo.findByEmailIgnoreCase(email);
     }
 
 }
