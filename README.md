@@ -18,7 +18,6 @@ The backend of the e-commerce store is built using the following technologies an
 - Spring Boot
 - Spring Data JPA
 - JWT (JSON Web Tokens) for authentication
-- Stripe for payment processing
 
 ## Installation Instructions
 
