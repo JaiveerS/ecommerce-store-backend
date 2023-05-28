@@ -42,13 +42,7 @@ The backend of the e-commerce store is built using the following technologies an
 
 The backend server will start running on the specified port.
 
-4. Import the Postman collection:
-
-- Download the [Postman Collection JSON file](https://drive.google.com/file/d/14_L0adQOtW6dT4gqw4Du2iwez4XIyRiF/view?usp=drive_link).
-- Import the collection into Postman by clicking on "Import" and selecting the downloaded JSON file.
-- The collection includes the predefined CRUD operations for the e-commerce store API.
-
-5. Dummy Data Setup:
+4. Dummy Data Setup:
 
 The backend API can be initialized with dummy data using the following steps:
 
@@ -76,7 +70,7 @@ The backend API can be initialized with dummy data using the following steps:
   ```
   This will initialize the backend with the specified dummy products.
 
-6. Deploy the frontend:
+5. Deploy the frontend:
 
 To utilize the backend in a more user-friendly way, deploy the corresponding React frontend. Follow the deployment instructions provided in the frontend repository.
 
