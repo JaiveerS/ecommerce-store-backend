@@ -105,19 +105,17 @@ The frontend will be accessible at [http://localhost:3000](http://localhost:3000
 
 The following are the main API endpoints provided by the backend:
 
+Get all users: GET method to "/api/users"
+Get all roles: GET method to "/api/roles"
+Check all users: GET method to "/api/users"
+
 - `POST /api/auth/register` - Register a new user
 - `POST /api/auth/login` - User login
 - `GET /api/products` - Retrieve all products
 - `GET /api/products/{id}` - Retrieve a specific product by ID
-- `POST /api/products` - Create a new product
-- `PUT /api/products/{id}` - Update a specific product by ID
-- `DELETE /api/products/{id}` - Delete a specific product by ID
-- `GET /api/orders` - Retrieve all orders
-- `GET /api/orders/{id}` - Retrieve a specific order by ID
-- `POST /api/orders` - Create a new order
-- `PUT /api/orders/{id}` - Update a specific order by ID
-- `DELETE /api/orders/{id}` - Delete a specific order by ID
-- `POST /api/payments/process` - Process a payment
+- `POST /api/products` - Create a new product(s)
+- `GET /api/orders/all` - Retrieve Users orders secured endpoint (need to provide JWT)
+- `POST /api/orders/order` - Create a new order
 
 For detailed information on each endpoint and their request/response structures, refer to the API documentation in the Postman collection or code comments.
 
