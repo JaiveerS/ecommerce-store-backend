@@ -133,6 +133,8 @@ To access the frontend repository and deploy the frontend along with the backend
 
 Check out the live demo of the e-commerce store backend at [http://140.238.147.51:8080/api/products](http://140.238.147.51:8080/api/products).
 
+The frontend which uses this backend is accessible at [http://140.238.147.51/](http://140.238.147.51/).
+
 ## Troubleshooting and FAQ
 
 **Q: How do I report an issue or contribute to the project?**
