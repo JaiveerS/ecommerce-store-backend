@@ -1,0 +1,324 @@
+[
+    {
+        "productName": "Pixel 6a",
+        "price": 399.00,
+        "category": "Technology",
+        "description": "Smart, powerful, helpful. And less than you think.",
+        "image": "https://lh3.googleusercontent.com/hvlIEmbrAYj0MG4k6wsSpiGTCkCRgLdKdksDii5TYpqOvSGHuWbs3n0LB8JXkua2PsM6lSM9TiOAAWO3mZJYghbKVNFioSTVKgc=rw-e365-w240"
+    },
+    {
+        "productName": "iPhone 14 Pro Max",
+        "price": 1549.00,
+        "category": "Technology",
+        "description": "iPhone 14 Pro and 14 Pro Max. With Dynamic Island. Emergency SOS via satellite. Crash Detection. An innovative 48MP camera. And A16 Bionic.",
+        "image": "https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1662655662/Croma%20Assets/Communication/Mobiles/Images/261979_oq7vjv.png/mxw_1440,f_auto"
+    },
+    {
+        "productName": "Samsung Galaxy S23 Ultra",
+        "price": 1450.00,
+        "category": "Technology",
+        "description": "The Samsung Galaxy S23 is a line of high-end Android smartphones produced and marketed by Samsung Electronics as part of its flagship Galaxy S series.",
+        "image": "https://image-us.samsung.com/us/smartphones/galaxy-s23-ultra/images/gallery/SkyBlue/1.jpg?$default-400-jpg$"
+    },
+    {
+        "productName": "Mans Search for Meaning",
+        "price": 18.00,
+        "category": "Books",
+        "description": "Psychiatrist Viktor Frankls memoir has riveted generations of readers with its descriptions of life in Nazi death camps and its lessons for spiritual survival.",
+        "image": "https://i0.wp.com/viktorfranklamerica.com/wp-content/uploads/2021/06/1624554342.png?fit=1500%2C1150&ssl=1"
+    },
+    {
+        "productName": "Enders Game",
+        "price": 16.00,
+        "category": "Books",
+        "description": "Andrew Wiggin thinks he is playing computer simulated war games; he is, in fact, engaged in something far more desperate.",
+        "image": "https://justinswapp.com/wp-content/uploads/2015/05/enders-game.jpg"
+    },
+    {
+        "productName": "Shoe Dog",
+        "price": 14.00,
+        "category": "Books",
+        "description": "Young, searching, fresh out of business school, Phil Knight borrowed fifty dollars from his father and launched a company with one simple mission: import high-quality, low-cost running shoes from Japan.",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/612m5zIwPLL._AC_UL210_SR210,210_.jpg"
+    },
+    {
+        "productName": "Sony WH-1000XM5",
+        "price": 349.00,
+        "category": "Technology",
+        "description": "Industry-leading noise canceling headphones with premium sound and comfort.",
+        "image": "https://www.sony.ca/image/6145c1d32e6ac8e63a46c912dc33c5bb?fmt=pjpeg&wid=165&bgcolor=FFFFFF&bgc=FFFFFF"
+    },
+    {
+        "productName": "Dell XPS 13",
+        "price": 999.00,
+        "category": "Technology",
+        "description": "The ultimate laptop with stunning display and powerful performance.",
+        "image": "https://webobjects2.cdw.com/is/image/CDW/7539880?$product-main$"
+    },
+    {
+        "productName": "Apple Watch Series 8",
+        "price": 399.00,
+        "category": "Technology",
+        "description": "Advanced health features, always-on display, and impressive performance.",
+        "image": "https://www.jumpplus.com/web/image/product.product/29377/image_1024/%5BMNP63VC-A%5D%20Apple%20Watch%20Series%208%20Starlight%20Aluminium%20Case%20with%20Starlight%20Sport%20Band%20%2841mm%2C%20GPS%29?unique=d4477d6"
+    },
+    {
+        "productName": "Thinking, Fast and Slow",
+        "price": 15.00,
+        "category": "Books",
+        "description": "A groundbreaking book by Daniel Kahneman, exploring the two systems that drive the way we think.",
+        "image": "https://images.penguinrandomhouse.com/cover/9780374533557"
+    },
+    {
+        "productName": "Atomic Habits",
+        "price": 20.00,
+        "category": "Books",
+        "description": "An easy & proven way to build good habits & break bad ones.",
+        "image": "https://m.media-amazon.com/images/I/61Bhf8CdaML._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "productName": "The Alchemist",
+        "price": 13.00,
+        "category": "Books",
+        "description": "A philosophical novel by Paulo Coelho about following your dreams.",
+        "image": "https://m.media-amazon.com/images/I/71zHDXu1TaL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Nike Air Max 270",
+        "price": 150.00,
+        "category": "Fashion",
+        "description": "A versatile and stylish sneaker with maximum comfort.",
+        "image": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/cb1951e7-0600-4f7a-9b26-12be8cd2bd01/W+AIR+MAX+270.png"
+    },
+    {
+        "productName": "Levi's 501 Original Jeans",
+        "price": 60.00,
+        "category": "Fashion",
+        "description": "The iconic straight-fit jeans that started it all.",
+        "image": "https://lsco.scene7.com/is/image/lsco/005010193-dynamic1-pdp?fmt=jpeg&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=2000&hei=1840"
+    },
+    {
+        "productName": "Ray-Ban Aviator Sunglasses",
+        "price": 180.00,
+        "category": "Fashion",
+        "description": "Timeless style with high-performance protection.",
+        "image": "https://m.media-amazon.com/images/I/41GI3ksk5AL._AC_UY1000_.jpg"
+    },
+    {
+        "productName": "Instant Pot Duo",
+        "price": 89.00,
+        "category": "Appliances",
+        "description": "The all-in-one kitchen appliance for pressure cooking, slow cooking, and more.",
+        "image": "https://m.media-amazon.com/images/I/61JWaq-JFDL.jpg"
+    },
+    {
+        "productName": "Dyson V11 Vacuum",
+        "price": 599.00,
+        "category": "Appliances",
+        "description": "Cordless vacuum cleaner with powerful suction and intelligent cleaning modes.",
+        "image": "https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary/447921-01.png?$responsive$&cropPathE=mobile&fit=stretch,1&wid=640"
+    },
+    {
+        "productName": "Keurig K-Elite",
+        "price": 149.00,
+        "category": "Appliances",
+        "description": "Single serve coffee maker with strong brew setting and iced coffee capability.",
+        "image": "https://i5.walmartimages.com/asr/ee30b8db-acf2-400f-af3e-7d702bdb3447_1.ba2094abc9e63af8440e189a7702c482.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+    },
+    {
+        "productName": "Bose SoundLink Revolve+",
+        "price": 299.00,
+        "category": "Electronics",
+        "description": "Portable Bluetooth speaker with 360-degree sound and deep bass.",
+        "image": "https://m.media-amazon.com/images/I/61mkO-GAIaL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Canon EOS R5",
+        "price": 3899.00,
+        "category": "Electronics",
+        "description": "Full-frame mirrorless camera with 8K video recording and exceptional image quality.",
+        "image": "https://m.media-amazon.com/images/I/61lKwvtzRzL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Nintendo Switch",
+        "price": 299.00,
+        "category": "Electronics",
+        "description": "Hybrid console for gaming at home and on the go.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Nintendo-Switch-wJoyCons-BlRd-Standing-FL.jpg/300px-Nintendo-Switch-wJoyCons-BlRd-Standing-FL.jpg"
+    },
+    {
+        "productName": "Fitbit Charge 5",
+        "price": 179.00,
+        "category": "Fitness",
+        "description": "Advanced fitness and health tracker with built-in GPS, stress management tools, and more.",
+        "image": "https://i5.walmartimages.com/asr/91e74b06-e256-4dca-a115-17e4c43b774c.bcadf352b26aa14067bca1b57b27b096.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff"
+    },
+    {
+        "productName": "Jabra Elite 75t",
+        "price": 149.00,
+        "category": "Technology",
+        "description": "True wireless earbuds with active noise cancellation and long battery life.",
+        "image": "https://m.media-amazon.com/images/I/61hr5HjjbCL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Garmin Fenix 6 Pro",
+        "price": 599.00,
+        "category": "Fitness",
+        "description": "Premium multisport GPS smartwatch with advanced training features.",
+        "image": "https://m.media-amazon.com/images/I/71A4NakgV4L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Herschel Little America Backpack",
+        "price": 99.00,
+        "category": "Fashion",
+        "description": "A classic mountaineering style backpack with modern functionality.",
+        "image": "https://herschel.ca/content/dam/herschel/products/11390/11390-00001-OS_01.jpg.sthumbnails.2000.2500.webp"
+    },
+    {
+        "productName": "Logitech MX Master 3",
+        "price": 99.00,
+        "category": "Technology",
+        "description": "Advanced wireless mouse with ultra-fast scrolling and ergonomic design.",
+        "image": "https://m.media-amazon.com/images/I/613a-3jtieL.jpg"
+    },
+    {
+        "productName": "KitchenAid Stand Mixer",
+        "price": 399.00,
+        "category": "Appliances",
+        "description": "Iconic stand mixer with powerful performance and versatile attachments.",
+        "image": "https://m.media-amazon.com/images/I/61pxecPA0WL._AC_UF350,350_QL80_.jpg"
+    },
+    {
+        "productName": "Columbia Watertight II Jacket",
+        "price": 79.00,
+        "category": "Fashion",
+        "description": "Lightweight, waterproof rain jacket perfect for outdoor activities.",
+        "image": "https://media-www.marks.com/product/marks-work-wearhouse/mens-world/mens-outerwear/410030660691/columbia-men-s-watertight-ii-hooded-rain-jacket-waterproof-breathable-packable-hiking-62bfbc85-f02d-4895-bd02-9efe08c2d340-jpgrendition.jpg?impolicy=mZoom"
+    },
+    {
+        "productName": "Breville Barista Express",
+        "price": 699.00,
+        "category": "Appliances",
+        "description": "All-in-one espresso machine with built-in grinder for perfect coffee.",
+        "image": "https://m.media-amazon.com/images/I/71y3bDHHhcL.jpg"
+    },
+    {
+        "productName": "Patagonia Better Sweater Fleece",
+        "price": 139.00,
+        "category": "Fashion",
+        "description": "Warm, cozy fleece jacket made with recycled materials.",
+        "image": "https://www.patagonia.ca/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw5c4d94ee/images/hi-res/25528_ORTN.jpg?sw=768&sh=768&sfrm=png&q=95&bgcolor=f5f5f5"
+    },
+    {
+        "productName": "Sony A7 III",
+        "price": 1999.00,
+        "category": "Technology",
+        "description": "Full-frame mirrorless camera with impressive image quality and fast autofocus.",
+        "image": "https://m.media-amazon.com/images/I/81zewshg2eL.jpg"
+    },
+    {
+        "productName": "Nespresso VertuoPlus",
+        "price": 149.00,
+        "category": "Appliances",
+        "description": "Single-serve coffee and espresso maker with unique Centrifusion technology.",
+        "image": "https://m.media-amazon.com/images/I/71xnpSSiZdL.jpg"
+    },
+    {
+        "productName": "The North Face Borealis Backpack",
+        "price": 89.00,
+        "category": "Fashion",
+        "description": "A versatile backpack with ample storage and comfortable straps.",
+        "image": "https://m.media-amazon.com/images/I/51Gblm6leXL._AC_UY1000_.jpg"
+    },
+    {
+        "productName": "Sony WH-CH710N",
+        "price": 99.00,
+        "category": "Technology",
+        "description": "Wireless noise-canceling headphones with long battery life.",
+        "image": "https://m.media-amazon.com/images/I/51J+mqsqsGL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "productName": "GoPro HERO9 Black",
+        "price": 399.00,
+        "category": "Technology",
+        "description": "Waterproof action camera with 5K video and front-facing display.",
+        "image": "https://m.media-amazon.com/images/I/518PGIaxCPL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Dyson Pure Cool TP01",
+        "price": 399.00,
+        "category": "Appliances",
+        "description": "Air purifier and tower fan in one with advanced filtration technology.",
+        "image": "https://m.media-amazon.com/images/I/61sG2G23BYL.jpg"
+    },
+    {
+        "productName": "Anker PowerCore 20100",
+        "price": 49.00,
+        "category": "Technology",
+        "description": "High-capacity portable charger with fast charging capabilities.",
+        "image": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/d3c2301e-181d-42b1-9a71-b968918b9506.__CR0,0,166,182_PT0_SX166_V1___.jpg"
+    },
+    {
+        "productName": "Osprey Daylite Plus Backpack",
+        "price": 65.00,
+        "category": "Fashion",
+        "description": "Lightweight and versatile backpack perfect for day hikes and travel.",
+        "image": "https://m.media-amazon.com/images/I/81VSFgVff1L.jpg"
+    },
+    {
+        "productName": "Ninja Foodi 5-in-1 Grill",
+        "price": 229.00,
+        "category": "Appliances",
+        "description": "Indoor grill and air fryer with multiple cooking functions.",
+        "image": "https://m.media-amazon.com/images/I/61MyGX2pKcL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "productName": "Adidas Ultraboost 21",
+        "price": 180.00,
+        "category": "Fashion",
+        "description": "High-performance running shoe with responsive cushioning.",
+        "image": "https://ernies.ca/cdn/shop/products/Ultraboost_21_Shoes_Black_FY0378_01_standard_3a359da8-d3a0-4496-9045-1b2d1e144cfa.jpg?v=1623270434"
+    },
+    {
+        "productName": "Apple iPad Air",
+        "price": 599.00,
+        "category": "Technology",
+        "description": "10.9-inch tablet with A14 Bionic chip and stunning Liquid Retina display.",
+        "image": "https://m.media-amazon.com/images/I/71aFluIMS2L.jpg"
+    },
+    {
+        "productName": "KitchenAid Artisan Mini",
+        "price": 349.00,
+        "category": "Appliances",
+        "description": "Compact stand mixer with powerful performance and versatile attachments.",
+        "image": "https://i5.walmartimages.ca/images/Enlarge/519/429/6000198519429.jpg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+    },
+    {
+        "productName": "Fossil Gen 5 Smartwatch",
+        "price": 299.00,
+        "category": "Fashion",
+        "description": "Stylish smartwatch with heart rate monitoring and customizable watch faces.",
+        "image": "https://m.media-amazon.com/images/I/713Y3mEURnL._AC_UY900_.jpg"
+    },
+    {
+        "productName": "Roomba i7+",
+        "price": 799.00,
+        "category": "Appliances",
+        "description": "Robot vacuum with self-emptying base and advanced navigation.",
+        "image": "https://m.media-amazon.com/images/I/61i8b1-5kcL.jpg"
+    },
+    {
+        "productName": "Canon PowerShot G7 X Mark III",
+        "price": 749.00,
+        "category": "Technology",
+        "description": "Compact camera with 4K video recording and high-quality image sensor.",
+        "image": "https://m.media-amazon.com/images/I/61igZmDM90L.jpg"
+    },
+    {
+        "productName": "Marmot PreCip Eco Jacket",
+        "price": 100.00,
+        "category": "Fashion",
+        "description": "Eco-friendly rain jacket made from recycled materials.",
+        "image": "https://m.media-amazon.com/images/I/71I8zriA+sL._AC_UY1000_.jpg"
+    }
+]
