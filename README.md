@@ -47,8 +47,7 @@ The backend API can be initialized with dummy data using the following steps:
 
 - Make a `POST` request to the `/api/products` endpoint with the following request body:
   ```json
-  {
-    "products": [
+  [
       {
         "productName": "Product 1",
         "price": 19.99,
@@ -64,8 +63,7 @@ The backend API can be initialized with dummy data using the following steps:
         "image": "https://example.com/product2.jpg"
       }
       // Add more dummy product objects as needed
-    ]
-  }
+  ]
   ```
   This will initialize the backend with the specified dummy products.
 
