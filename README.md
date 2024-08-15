@@ -7,8 +7,7 @@ This is the backend code for an e-commerce store, providing the necessary APIs a
 - User authentication and authorization
 - Product management (CRUD operations)
 - Order management
-- Secure payment processing
-- Integration with external services (e.g., shipping, email notifications)
+- Secure payment processing (IN PROGRESS)
 
 ## Technologies Used
 
