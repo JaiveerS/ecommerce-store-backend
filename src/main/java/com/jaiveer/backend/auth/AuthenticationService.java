@@ -7,13 +7,15 @@ import com.jaiveer.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+
     private final UserRepository userRepo;
     private final PasswordEncoder encoder;
     private final JwtService jwtService;
@@ -42,16 +44,15 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse login(LoginRequest request) {
-        authenticationManager.authenticate(
+        Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
                 )
         );
-        var user = userRepo.findByEmailIgnoreCase(request.getEmail());
-        if (user == null) {
-            throw new UsernameNotFoundException("Email not found");
-        }
+
+        UserDetails user = (UserDetails) auth.getPrincipal();
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
