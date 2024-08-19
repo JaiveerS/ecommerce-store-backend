@@ -26,11 +26,18 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.login(request));
     }
 
+    @PutMapping("/changeCredentials")
+    public ResponseEntity<UserInfoResponse> changeCredentials(
+            @RequestBody RegisterRequest request
+    ) {
+        return ResponseEntity.ok(service.changeCredentials(request));
+    }
+
     @GetMapping("/token")
-    public UserInfoResponse getUserInfo(
+    public ResponseEntity<UserInfoResponse> userInfo(
             @RequestHeader(name = "Authorization") String token
     ) {
         String jwt = token.substring(7);
-        return new UserInfoResponse(service.getId(jwt), service.getFirstName(jwt), service.getLastName(jwt), service.getEmail(jwt));
+        return ResponseEntity.ok(service.getUserInfoFromToken(jwt));
     }
 }

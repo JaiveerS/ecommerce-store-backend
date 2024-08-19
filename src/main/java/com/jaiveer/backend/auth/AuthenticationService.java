@@ -84,4 +84,16 @@ public class AuthenticationService {
         return userRepo.findByEmailIgnoreCase(email);
     }
 
+    public UserInfoResponse getUserInfoFromToken(String token) {
+        String email = getEmail(token);
+        User user = userRepo.findByEmailIgnoreCase(email);
+        return new UserInfoResponse(user);
+    }
+
+    public UserInfoResponse changeCredentials(RegisterRequest request) {
+        User user = userRepo.findByEmailIgnoreCase(request.getEmail());
+        user.setPassword(encoder.encode(request.getPassword()));
+
+        return new UserInfoResponse(userRepo.save(user));
+    }
 }
