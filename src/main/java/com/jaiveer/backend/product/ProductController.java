@@ -78,7 +78,7 @@ public class ProductController {
     }
 
     //temp for testing
-    @GetMapping("/test")
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
