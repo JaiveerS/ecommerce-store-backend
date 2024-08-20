@@ -17,8 +17,6 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-//    private static final String SECRET_KEY = "6150645367566B5970337336763979244226452948404D6351655468576D5A71";
-
     @Value("${jwt.SECRET_KEY}")
     private String SECRET_KEY;
 
