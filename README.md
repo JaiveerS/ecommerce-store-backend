@@ -36,6 +36,7 @@ The backend of the e-commerce store is built using the following technologies an
 `mvn spring-boot:run`
 
 The backend server will start running on the specified port.
+(add secret key for jwt token signature in applications.yml)
 
 4. Dummy Data Setup:
 
