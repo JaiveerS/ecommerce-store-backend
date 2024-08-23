@@ -130,7 +130,7 @@ the [E-Commerce Store Frontend Repository](https://github.com/JaiveerS/ecommerce
 Check out the live demo of the e-commerce store backend
 at [http://129.153.49.68:8080/api/products](http://129.153.49.68:8080/api/products).
 
-The frontend which uses this backend is accessible at [http://129.153.49.68/](http://140.238.147.51/).
+The frontend which uses this backend is accessible at [http://140.238.147.51/](http://140.238.147.51/).
 
 ## Troubleshooting and FAQ
 
