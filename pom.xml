@@ -11,7 +11,7 @@
     <packaging>war</packaging>
     <groupId>com.jaiveer</groupId>
     <artifactId>backend</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>backend</name>
     <description>backend-using-jwt</description>
     <properties>
