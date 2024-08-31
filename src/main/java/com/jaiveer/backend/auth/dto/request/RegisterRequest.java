@@ -33,7 +33,7 @@ public class RegisterRequest {
 
     public boolean validatePassword() throws Exception {
         if (this.password.length() < 6) {
-            throw new Exception("password must be at least 6 characters long");
+            throw new Exception("Password must be at least 6 characters long");
         }
         return true;
     }
@@ -42,7 +42,7 @@ public class RegisterRequest {
         Pattern VALID_EMAIL_ADDRESS_REGEX =
                 Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         if (this.email.length() < 2) {
-            throw new Exception("Firstname must be at least 2 characters long");
+            throw new Exception("Email must be at least 2 characters long");
         } else if (!VALID_EMAIL_ADDRESS_REGEX.matcher(this.email).matches()) {
             throw new Exception("Use a valid email address");
         }
