@@ -24,8 +24,8 @@ public class AuthenticationController {
             @RequestBody RegisterRequest request
     ) {
         try {
-            
-            AuthenticationResponse registeredResponse = authenticationService.register(request);
+
+            AuthenticationResponse registeredResponse = authenticationService.registerUser(request);
             return ResponseEntity.status(HttpStatus.CREATED).body(registeredResponse);
 
         } catch (Exception e) {

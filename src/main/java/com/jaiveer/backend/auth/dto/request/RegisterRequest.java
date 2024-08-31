@@ -49,7 +49,7 @@ public class RegisterRequest {
         return true;
     }
 
-    public void validateAll() throws Exception {
+    public void validateUserDetails() throws Exception {
         this.validateFirstname();
         this.validateLastname();
         this.validateEmail();

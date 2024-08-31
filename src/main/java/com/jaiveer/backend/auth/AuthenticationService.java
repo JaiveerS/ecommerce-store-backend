@@ -19,26 +19,31 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-    private final UserRepository userRepo;
-    private final PasswordEncoder encoder;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) throws Exception {
-        request.validateAll();
-        if (userRepo.existsByEmailIgnoreCase(request.getEmail())) {
-            throw new Exception("user with this email already exists");
+    public AuthenticationResponse registerUser(RegisterRequest request) throws Exception {
+        request.validateUserDetails();
+
+
+        if (userRepository.existsByEmailIgnoreCase(request.getEmail())) {
+            throw new Exception("User with this email already exists");
         }
 
-        var user = User.builder()
+        String hashedPassword = passwordEncoder.encode(request.getPassword());
+
+        User user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
-                .password(encoder.encode(request.getPassword()))
+                .password(hashedPassword)
                 .build();
-        userRepo.save(user);
-        var jwtToken = jwtService.generateToken(user);
+
+        userRepository.save(user);
+
+        String jwtToken = jwtService.generateJwtToken(user);
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
@@ -55,7 +60,7 @@ public class AuthenticationService {
 
         UserDetails user = (UserDetails) auth.getPrincipal();
 
-        var jwtToken = jwtService.generateToken(user);
+        var jwtToken = jwtService.generateJwtToken(user);
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
@@ -83,19 +88,19 @@ public class AuthenticationService {
 
     public User getUserFromToken(String token) {
         String email = getEmail(token);
-        return userRepo.findByEmailIgnoreCase(email);
+        return userRepository.findByEmailIgnoreCase(email);
     }
 
     public UserInfoResponse getUserInfoFromToken(String token) {
         String email = getEmail(token);
-        User user = userRepo.findByEmailIgnoreCase(email);
+        User user = userRepository.findByEmailIgnoreCase(email);
         return new UserInfoResponse(user);
     }
 
     public UserInfoResponse changeCredentials(RegisterRequest request) {
-        User user = userRepo.findByEmailIgnoreCase(request.getEmail());
-        user.setPassword(encoder.encode(request.getPassword()));
+        User user = userRepository.findByEmailIgnoreCase(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        return new UserInfoResponse(userRepo.save(user));
+        return new UserInfoResponse(userRepository.save(user));
     }
 }

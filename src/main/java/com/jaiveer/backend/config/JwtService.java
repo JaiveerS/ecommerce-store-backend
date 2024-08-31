@@ -38,21 +38,22 @@ public class JwtService {
                 .getBody();
     }
 
-    public String generateToken(
+    public String generateJwtToken(
             UserDetails userDetails
     ) {
-        return generateToken(new HashMap<>(), userDetails);
+        return generateJwtToken(new HashMap<>(), userDetails);
     }
 
-    public String generateToken(
+    public String generateJwtToken(
             Map<String, Object> extraClaims,
             UserDetails userDetails) {
+        int oneHourInMilliseconds = 1000 * 60 * 60;
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) //jwt valid for 60 mins
+                .setExpiration(new Date(System.currentTimeMillis() + oneHourInMilliseconds))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
