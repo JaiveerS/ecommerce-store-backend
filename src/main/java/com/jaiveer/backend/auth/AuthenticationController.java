@@ -17,17 +17,22 @@ import java.util.Map;
 @CrossOrigin
 public class AuthenticationController {
 
-    private final AuthenticationService service;
-
+    private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public ResponseEntity<Object> register(
+    public ResponseEntity<Object> registerUser(
             @RequestBody RegisterRequest request
     ) {
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(service.register(request));
+            
+            AuthenticationResponse registeredResponse = authenticationService.register(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(registeredResponse);
+
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", e.getMessage()));
+
+            Map<String, String> errorMessage = Map.of("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
+
         }
     }
 
@@ -36,23 +41,24 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(
             @RequestBody LoginRequest request
     ) {
-        return ResponseEntity.ok(service.login(request));
+        return ResponseEntity.ok(authenticationService.login(request));
     }
 
 
     @PutMapping("/changeCredentials")
-    public ResponseEntity<UserInfoResponse> changeCredentials(
+    public ResponseEntity<UserInfoResponse> changeUserCredentials(
             @RequestBody RegisterRequest request
     ) {
-        return ResponseEntity.ok(service.changeCredentials(request));
+        return ResponseEntity.ok(authenticationService.changeCredentials(request));
     }
 
 
     @GetMapping("/token")
-    public ResponseEntity<UserInfoResponse> userInfo(
+    public ResponseEntity<UserInfoResponse> getUserInformation(
             @RequestHeader(name = "Authorization") String token
     ) {
-        String jwt = token.substring(7);
-        return ResponseEntity.ok(service.getUserInfoFromToken(jwt));
+        int tokenPrefixLength = 7;
+        String jwtToken = token.substring(tokenPrefixLength);
+        return ResponseEntity.ok(authenticationService.getUserInfoFromToken(jwtToken));
     }
 }
