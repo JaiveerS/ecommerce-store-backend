@@ -28,25 +28,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
-        final String jwtToken;
-        final String email;
+        final String jwtToken = authHeader != null && authHeader.startsWith("Bearer ") ? authHeader.substring(7) : null;
 
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Authorization, content-type, xsrf-token");
-        response.addHeader("Access-Control-Expose-Headers", "xsrf-token");
-        response.addHeader("Access-Control-Allow-Credentials", "true");
-
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+        if (jwtToken == null) {
             filterChain.doFilter(request, response);
             return;
         }
-        jwtToken = authHeader.substring(7); //auth token starts with 'Bearer ' in first 7 positions
-        email = jwtService.extractUsername(jwtToken);
+
+        final String email = jwtService.extractUsername(jwtToken);
 
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             if (jwtService.isTokenValid(jwtToken, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
