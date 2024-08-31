@@ -5,6 +5,8 @@ import com.jaiveer.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,63 +25,75 @@ public class ProductController {
     //temp for testing
     private final UserRepository userRepo;
 
+
+    @PostMapping("/product")
+    ResponseEntity<Product> newProduct(@RequestBody Product Product) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Product));
+    }
+
     @GetMapping("/products")
-    public CollectionModel<EntityModel<Product>> all() {
+    public ResponseEntity<CollectionModel<EntityModel<Product>>> all() {
         List<EntityModel<Product>> Products = repository.findAll().stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(Products, linkTo(methodOn(ProductController.class).all()).withSelfRel());
+        return ResponseEntity.status(HttpStatus.CREATED).body(CollectionModel.of(Products, linkTo(methodOn(ProductController.class).all()).withSelfRel()));
     }
 
-    @PostMapping("/product")
-    Product newProduct(@RequestBody Product Product) {
-        return repository.save(Product);
+
+    @PostMapping("/products")
+    ResponseEntity<List<Product>> newProduct(@RequestBody List<Product> Products) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(repository.saveAll(Products));
     }
 
-    @PostMapping("products")
-    List<Product> newProduct(@RequestBody List<Product> Products) {
-        return repository.saveAll(Products);
-    }
 
     @GetMapping("/products/{id}")
-    public EntityModel<Product> getById(@PathVariable Long id) {
+    public ResponseEntity<EntityModel<Product>> getById(@PathVariable Long id) {
         Product Product = repository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException(id));
 
-        return assembler.toModel(Product);
+        return ResponseEntity.ok(assembler.toModel(Product));
     }
 
+
     @PutMapping("products/{id}")
-    Product replaceProduct(@RequestBody Product newProduct, @PathVariable Long id) {
+    ResponseEntity<Product> replaceProduct(@RequestBody Product newProduct, @PathVariable Long id) {
         return repository.findById(id).map(Product -> {
             Product.setProductName(newProduct.getProductName());
             Product.setCategory(newProduct.getCategory());
-            return repository.save(Product);
+            return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Product));
         }).orElseGet(() -> {
             newProduct.setId(id);
-            return repository.save(newProduct);
+            return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(newProduct));
         });
     }
+
 
     @DeleteMapping("/products/{id}")
     void deleteProduct(@PathVariable Long id) {
         repository.deleteById(id);
     }
 
+
     @GetMapping("/categories")
-    public List<String> getAllCategories() {
-        return repository.findUniqueCategories();
+    public ResponseEntity<List<String>> getAllCategories() {
+        List<String> categories = repository.findUniqueCategories();
+
+        if (categories == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(repository.findUniqueCategories());
     }
 
+
     @GetMapping("/categories/{cat}")
-    public List<Product> getById(@PathVariable String cat) {
-        return repository.findAllByCategory(cat);
+    public ResponseEntity<List<Product>> getById(@PathVariable String cat) {
+        return ResponseEntity.ok(repository.findAllByCategory(cat));
     }
 
     //temp for testing
     @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return userRepo.findAll();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userRepo.findAll());
     }
 }

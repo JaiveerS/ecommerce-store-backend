@@ -2,10 +2,12 @@ package com.jaiveer.backend.order;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -22,19 +24,24 @@ public class OrderController {
     }
 
     @GetMapping("/all")
-    public CollectionModel<Order> getAllOrders() {
-        return CollectionModel.of(orderRepo.findAll());
+    public ResponseEntity<CollectionModel<Order>> getAllOrders() {
+        return ResponseEntity.ok(CollectionModel.of(orderRepo.findAll()));
     }
 
     @GetMapping("/{id}")
-    public List<Order> getOrdersById(@PathVariable Long id) {
-        return orderRepo.findByUserId(id);
+    public ResponseEntity<List<Order>> getOrdersById(@PathVariable Long id) {
+        return ResponseEntity.ok(orderRepo.findByUserId(id));
     }
 
     @PostMapping("/order")
-    public Order placeOrder(
+    public ResponseEntity<Object> placeOrder(
             @RequestBody Order request
-    ) throws Exception {
-        return service.addOrder(request);
+    ) {
+        try {
+            Order order = service.addOrder(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(order);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", e.getMessage()));
+        }
     }
 }
