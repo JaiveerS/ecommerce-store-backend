@@ -1,4 +1,4 @@
-package com.jaiveer.backend.auth;
+package com.jaiveer.backend.auth.dto.response;
 
 import com.jaiveer.backend.user.User;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ public class UserInfoResponse {
     private String lastname;
     private String email;
 
-    UserInfoResponse(User user) {
+    public UserInfoResponse(User user) {
         this.id = user.getId().toString();
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();

@@ -1,4 +1,4 @@
-package com.jaiveer.backend.auth;
+package com.jaiveer.backend.auth.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

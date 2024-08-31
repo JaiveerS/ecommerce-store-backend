@@ -1,7 +1,10 @@
 package com.jaiveer.backend.auth;
 
+import com.jaiveer.backend.auth.dto.request.LoginRequest;
+import com.jaiveer.backend.auth.dto.request.RegisterRequest;
+import com.jaiveer.backend.auth.dto.response.AuthenticationResponse;
+import com.jaiveer.backend.auth.dto.response.UserInfoResponse;
 import com.jaiveer.backend.config.JwtService;
-import com.jaiveer.backend.user.Role;
 import com.jaiveer.backend.user.User;
 import com.jaiveer.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +36,6 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(encoder.encode(request.getPassword()))
-                .role(Role.USER)
                 .build();
         userRepo.save(user);
         var jwtToken = jwtService.generateToken(user);

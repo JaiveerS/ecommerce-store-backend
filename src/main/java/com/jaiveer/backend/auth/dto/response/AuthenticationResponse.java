@@ -1,4 +1,4 @@
-package com.jaiveer.backend.auth;
+package com.jaiveer.backend.auth.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
-    private String email;
-    String password;
+public class AuthenticationResponse {
+    private String token;
 }
