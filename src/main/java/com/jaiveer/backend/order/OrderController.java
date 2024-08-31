@@ -15,8 +15,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final OrderRepository orderRepo;
-    private final OrderService service;
+    private final OrderRepository orderRepository;
+    private final OrderService orderService;
 
     @GetMapping("/hello")
     public ResponseEntity<String> sayHello() {
@@ -25,12 +25,12 @@ public class OrderController {
 
     @GetMapping("/all")
     public ResponseEntity<CollectionModel<Order>> getAllOrders() {
-        return ResponseEntity.ok(CollectionModel.of(orderRepo.findAll()));
+        return ResponseEntity.ok(CollectionModel.of(orderRepository.findAll()));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<List<Order>> getOrdersById(@PathVariable Long id) {
-        return ResponseEntity.ok(orderRepo.findByUserId(id));
+        return ResponseEntity.ok(orderRepository.findByUserId(id));
     }
 
     @PostMapping("/order")
@@ -38,7 +38,7 @@ public class OrderController {
             @RequestBody Order request
     ) {
         try {
-            Order order = service.addOrder(request);
+            Order order = orderService.addOrder(request);
             return ResponseEntity.status(HttpStatus.CREATED).body(order);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", e.getMessage()));

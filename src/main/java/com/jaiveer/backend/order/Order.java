@@ -77,7 +77,7 @@ public class Order {
         return true;
     }
 
-    public void validateAll() throws Exception {
+    public void validateAllOrderInformation() throws Exception {
         this.validateFullname();
         this.validatePhoneNumber();
         this.validateAddress();

@@ -20,80 +20,80 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequiredArgsConstructor
 @CrossOrigin
 public class ProductController {
-    private final ProductRepository repository;
-    private final ProductModelAssembler assembler;
+    private final ProductRepository productRepository;
+    private final ProductModelAssembler productModelAssembler;
     //temp for testing
-    private final UserRepository userRepo;
+    private final UserRepository userRepository;
 
 
     @PostMapping("/product")
-    ResponseEntity<Product> newProduct(@RequestBody Product Product) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Product));
+    ResponseEntity<Product> addProduct(@RequestBody Product Product) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(Product));
     }
 
     @GetMapping("/products")
-    public ResponseEntity<CollectionModel<EntityModel<Product>>> all() {
-        List<EntityModel<Product>> Products = repository.findAll().stream()
-                .map(assembler::toModel)
+    public ResponseEntity<CollectionModel<EntityModel<Product>>> retrieveAllProducts() {
+        List<EntityModel<Product>> Products = productRepository.findAll().stream()
+                .map(productModelAssembler::toModel)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(CollectionModel.of(Products, linkTo(methodOn(ProductController.class).all()).withSelfRel()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(CollectionModel.of(Products, linkTo(methodOn(ProductController.class).retrieveAllProducts()).withSelfRel()));
     }
 
 
     @PostMapping("/products")
-    ResponseEntity<List<Product>> newProduct(@RequestBody List<Product> Products) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(repository.saveAll(Products));
+    ResponseEntity<List<Product>> addProducts(@RequestBody List<Product> Products) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.saveAll(Products));
     }
 
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<EntityModel<Product>> getById(@PathVariable Long id) {
-        Product Product = repository.findById(id)
+    public ResponseEntity<EntityModel<Product>> getProductById(@PathVariable Long id) {
+        Product Product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException(id));
 
-        return ResponseEntity.ok(assembler.toModel(Product));
+        return ResponseEntity.ok(productModelAssembler.toModel(Product));
     }
 
 
     @PutMapping("products/{id}")
-    ResponseEntity<Product> replaceProduct(@RequestBody Product newProduct, @PathVariable Long id) {
-        return repository.findById(id).map(Product -> {
-            Product.setProductName(newProduct.getProductName());
-            Product.setCategory(newProduct.getCategory());
-            return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Product));
+    ResponseEntity<Product> replaceProductById(@RequestBody Product updatedProduct, @PathVariable Long id) {
+        return productRepository.findById(id).map(Product -> {
+            Product.setProductName(updatedProduct.getProductName());
+            Product.setCategory(updatedProduct.getCategory());
+            return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(Product));
         }).orElseGet(() -> {
-            newProduct.setId(id);
-            return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(newProduct));
+            updatedProduct.setId(id);
+            return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(updatedProduct));
         });
     }
 
 
     @DeleteMapping("/products/{id}")
-    void deleteProduct(@PathVariable Long id) {
-        repository.deleteById(id);
+    void deleteProductById(@PathVariable Long id) {
+        productRepository.deleteById(id);
     }
 
 
     @GetMapping("/categories")
     public ResponseEntity<List<String>> getAllCategories() {
-        List<String> categories = repository.findUniqueCategories();
+        List<String> categories = productRepository.findUniqueCategories();
 
         if (categories == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.ok(repository.findUniqueCategories());
+        return ResponseEntity.ok(productRepository.findUniqueCategories());
     }
 
 
     @GetMapping("/categories/{cat}")
-    public ResponseEntity<List<Product>> getById(@PathVariable String cat) {
-        return ResponseEntity.ok(repository.findAllByCategory(cat));
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String cat) {
+        return ResponseEntity.ok(productRepository.findAllByCategory(cat));
     }
 
     //temp for testing
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userRepo.findAll());
+        return ResponseEntity.ok(userRepository.findAll());
     }
 }

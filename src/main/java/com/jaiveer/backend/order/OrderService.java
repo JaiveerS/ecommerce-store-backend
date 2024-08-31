@@ -10,7 +10,7 @@ public class OrderService {
 
 
     public Order addOrder(Order request) throws Exception {
-        request.validateAll();
+        request.validateAllOrderInformation();
         return orderRepo.save(request);
     }
 
