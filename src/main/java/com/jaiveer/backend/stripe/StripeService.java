@@ -1,7 +1,7 @@
 package com.jaiveer.backend.stripe;
 
-import com.jaiveer.backend.order.Order;
 import com.jaiveer.backend.order.OrderItems;
+import com.jaiveer.backend.user.UserRepository;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
@@ -20,8 +20,10 @@ public class StripeService {
 
     @Value("${stripe.privateKey}")
     private String STRIPE_PRIVATE_KEY;
+    private final UserRepository userRepository;
 
-    public Map<String, String> createPaymentIntent(Order order) {
+
+    public Map<String, String> createPaymentIntent(IntentRequest intentRequest) {
         Stripe.apiKey = STRIPE_PRIVATE_KEY;
 
         SessionCreateParams.Builder paramsBuilder =
@@ -29,9 +31,28 @@ public class StripeService {
                         .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
                         .setMode(SessionCreateParams.Mode.PAYMENT)
                         .setCurrency("USD")
-                        .setRedirectOnCompletion(SessionCreateParams.RedirectOnCompletion.NEVER);
+                        .setCustomerEmail(userRepository.getEmailById(intentRequest.getUserId()))
+                        .setShippingAddressCollection(SessionCreateParams.ShippingAddressCollection.builder()
+                                .addAllowedCountry(SessionCreateParams.ShippingAddressCollection.AllowedCountry.CA)
+                                .addAllowedCountry(SessionCreateParams.ShippingAddressCollection.AllowedCountry.US)
+                                .build())
+                        .addShippingOption(SessionCreateParams.ShippingOption.builder()
+                                .setShippingRateData(SessionCreateParams.ShippingOption.ShippingRateData.builder()
+                                        .setFixedAmount(SessionCreateParams.ShippingOption.ShippingRateData.FixedAmount.builder()
+                                                .setCurrency("USD")
+                                                .setAmount((long) 999)
+                                                .build())
+                                        .setDisplayName("Standard Shipping")
+                                        .setType(SessionCreateParams.ShippingOption.ShippingRateData.Type.FIXED_AMOUNT)
+                                        .build())
+                                .build())
 
-        for (OrderItems orderItem : order.getOrderItems()) {
+                        .setSubmitType(SessionCreateParams.SubmitType.PAY)
+                        .setRedirectOnCompletion(SessionCreateParams.RedirectOnCompletion.ALWAYS)
+                        .setReturnUrl("http://localhost:3000/success?session_={CHECKOUT_SESSION_ID}");
+//                        .setRedirectOnCompletion(SessionCreateParams.RedirectOnCompletion.NEVER);
+
+        for (OrderItems orderItem : intentRequest.getOrderItems()) {
             paramsBuilder.addLineItem(
                     SessionCreateParams.LineItem.builder()
                             .setQuantity((long) orderItem.getQuantity())
