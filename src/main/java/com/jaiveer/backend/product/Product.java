@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "_product")
+@Table(name = "products")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product {
     @Id
