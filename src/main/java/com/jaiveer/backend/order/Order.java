@@ -16,8 +16,7 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue
-    private Long orderNumber;
+    private String orderNumber;
     @Column(nullable = false)
     private Long userId;
     @Column(nullable = false)
