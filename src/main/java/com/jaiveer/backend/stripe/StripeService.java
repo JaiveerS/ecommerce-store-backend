@@ -32,7 +32,7 @@ public class StripeService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
     private final JwtService jwtService;
-
+    public final String baseURL = "http://140.238.147.51";
 
     public Map<String, String> createPaymentIntent(IntentRequest intentRequest) {
         Stripe.apiKey = STRIPE_PRIVATE_KEY;
@@ -60,7 +60,7 @@ public class StripeService {
 
                         .setSubmitType(SessionCreateParams.SubmitType.PAY)
                         .setRedirectOnCompletion(SessionCreateParams.RedirectOnCompletion.ALWAYS)
-                        .setReturnUrl("http://localhost:3000/success?session_={CHECKOUT_SESSION_ID}");
+                        .setReturnUrl(baseURL + "/success?session_={CHECKOUT_SESSION_ID}");
 //                        .setRedirectOnCompletion(SessionCreateParams.RedirectOnCompletion.NEVER);
 
         for (OrderItems orderItem : intentRequest.getOrderItems()) {
