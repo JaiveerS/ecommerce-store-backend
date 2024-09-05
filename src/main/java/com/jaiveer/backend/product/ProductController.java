@@ -3,6 +3,7 @@ package com.jaiveer.backend.product;
 import com.jaiveer.backend.user.User;
 import com.jaiveer.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,11 @@ public class ProductController {
     @PostMapping("/products")
     ResponseEntity<List<Product>> addProducts(@RequestBody List<Product> Products) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.saveAll(Products));
+    }
+
+    @GetMapping("/products/get")
+    public ResponseEntity<List<Product>> getProductNamesStartingWith(@RequestBody String partialProductName) {
+        return ResponseEntity.ok(productRepository.findByProductNamesStartingWith(partialProductName, Pageable.ofSize(5)).getContent());
     }
 
 
