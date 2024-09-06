@@ -48,8 +48,8 @@ public class ProductController {
     }
 
     @GetMapping("/products/get")
-    public ResponseEntity<List<Product>> getProductNamesStartingWith(@RequestBody String partialProductName) {
-        return ResponseEntity.ok(productRepository.findByProductNamesStartingWith(partialProductName, Pageable.ofSize(5)).getContent());
+    public ResponseEntity<List<Product>> getProductNamesStartingWith(@RequestParam String search) {
+        return ResponseEntity.ok(productRepository.findByProductNameContaining(search, Pageable.ofSize(5)).getContent());
     }
 
 

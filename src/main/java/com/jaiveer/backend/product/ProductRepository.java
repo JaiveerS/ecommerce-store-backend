@@ -15,8 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<String> findUniqueCategories();
 
 
-    @Query("SELECT DISTINCT p.productName, p.id, p.category, p.image, p.description, p.price FROM Product p WHERE p.productName LIKE CONCAT(:productName, '%')")
-    Page<Product> findByProductNamesStartingWith(@Param("productName") String productName, Pageable pageable);
+    @Query("SELECT DISTINCT p.productName, p.id, p.category, p.image, p.description, p.price FROM Product p WHERE p.productName LIKE CONCAT('%' ,:productName, '%')")
+    Page<Product> findByProductNameContaining(@Param("productName") String productName, Pageable pageable);
 
     //    @Query("SELECT DISTINCT a.productId FROM Product a WHERE a.productName = :productName")
 //    Long findByProductName(@Param("productName") String productName);
