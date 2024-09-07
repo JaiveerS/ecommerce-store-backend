@@ -25,6 +25,7 @@ public class ProductController {
     private final ProductModelAssembler productModelAssembler;
     //temp for testing
     private final UserRepository userRepository;
+    private final ProductService productService;
 
 
     @PostMapping("/product")
@@ -50,6 +51,13 @@ public class ProductController {
     @GetMapping("/products/get")
     public ResponseEntity<List<Product>> getProductNamesStartingWith(@RequestParam String search) {
         return ResponseEntity.ok(productRepository.findByProductNameContaining(search, Pageable.ofSize(5)).getContent());
+    }
+
+    @GetMapping("/products/recommended")
+    public ResponseEntity<List<Product>> generateRecommendedProducts(@RequestParam String id) {
+        Long productId = Long.parseLong(id);
+        List<Product> recommended = productService.createRecommended(productId, 4);
+        return ResponseEntity.ok(recommended);
     }
 
 
