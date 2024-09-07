@@ -4,6 +4,7 @@ import com.jaiveer.backend.config.JwtService;
 import com.jaiveer.backend.order.Order;
 import com.jaiveer.backend.order.OrderItems;
 import com.jaiveer.backend.order.OrderRepository;
+import com.jaiveer.backend.product.ProductRepository;
 import com.jaiveer.backend.user.UserRepository;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
@@ -32,7 +33,9 @@ public class StripeService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
     private final JwtService jwtService;
+    private final ProductRepository productRepository;
     public final String baseURL = "http://140.238.147.51";
+//    public final String baseURL = "http://localhost:3000";
 
     public Map<String, String> createPaymentIntent(IntentRequest intentRequest) {
         Stripe.apiKey = STRIPE_PRIVATE_KEY;
@@ -111,7 +114,7 @@ public class StripeService {
 
             for (LineItem lineItem : lineItems.getData()) {
                 OrderItems orderItem = OrderItems.builder()
-//                        .productId(productRepository.findByProductName(lineItem.getDescription()))
+                        .productId(productRepository.findProductByProductName(lineItem.getDescription()).getId())
                         .productName(lineItem.getDescription())
                         .price((double) lineItem.getPrice().getUnitAmount() / 100)
                         .quantity(Math.toIntExact(lineItem.getQuantity()))
